@@ -27,5 +27,25 @@
   <footer>
     <p>© 2025 TechFix. All Rights Reserved.</p>
   </footer>
+<script>
+  const user = localStorage.getItem("activeUser");
+  const header = document.querySelector("header");
+
+  if (user) {
+    const welcome = document.createElement("p");
+    welcome.textContent = "Welcome, " + user + " | ";
+    const logoutBtn = document.createElement("a");
+    logoutBtn.href = "#";
+    logoutBtn.textContent = "Logout";
+    logoutBtn.onclick = () => {
+      localStorage.removeItem("activeUser");
+      alert("You have been logged out!");
+      location.reload();
+    };
+    header.appendChild(welcome);
+    header.appendChild(logoutBtn);
+  }
+</script>
+
 </body>
 </html>
