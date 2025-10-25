@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <title>TechFix Computer Service</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fafafa; color: #333;}
+    header {background: #222; color: white; padding: 10px; text-align: center;}
+    nav a {color: white; margin: 0 10px; text-decoration: none;}
+    .hero {text-align: center; padding: 80px; background: #0078D7; color: white;}
+    .btn {background: white; color: #0078D7; padding: 10px 20px; text-decoration: none; border-radius: 5px;}
+    footer {text-align: center; background: #222; color: white; padding: 10px;}
+  </style>
 </head>
+
 <body>
+  <!-- Header Section -->
   <header>
     <h1>TechFix Computer Service</h1>
     <nav>
@@ -18,34 +28,48 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h2>Fast, Reliable Computer Repair Services</h2>
     <p>We fix desktops, laptops & gadgets — quick and affordable!</p>
     <a href="booking.html" class="btn">Book Now</a>
   </section>
 
+  <!-- Footer Section -->
   <footer>
     <p>© 2025 TechFix. All Rights Reserved.</p>
   </footer>
-<script>
-  const user = localStorage.getItem("activeUser");
-  const header = document.querySelector("header");
 
-  if (user) {
-    const welcome = document.createElement("p");
-    welcome.textContent = "Welcome, " + user + " | ";
-    const logoutBtn = document.createElement("a");
-    logoutBtn.href = "#";
-    logoutBtn.textContent = "Logout";
-    logoutBtn.onclick = () => {
-      localStorage.removeItem("activeUser");
-      alert("You have been logged out!");
-      location.reload();
-    };
-    header.appendChild(welcome);
-    header.appendChild(logoutBtn);
-  }
-</script>
+  <!-- Script to Show Welcome + Logout -->
+  <script>
+    // Semak jika pengguna dah login
+    const user = localStorage.getItem("activeUser");
+    const header = document.querySelector("header");
+
+    if (user) {
+      // Tambah mesej sambutan
+      const welcome = document.createElement("p");
+      welcome.textContent = "Welcome, " + user + " | ";
+
+      // Butang logout
+      const logoutBtn = document.createElement("a");
+      logoutBtn.href = "#";
+      logoutBtn.textContent = "Logout";
+      logoutBtn.style.color = "#00ffff";
+      logoutBtn.onclick = () => {
+        localStorage.removeItem("activeUser");
+        alert("You have been logged out!");
+        location.reload(); // refresh page
+      };
+
+      // Letak mesej dan butang ke dalam header
+      header.appendChild(welcome);
+      header.appendChild(logoutBtn);
+    }
+  </script>
+</body>
+</html>
+
 
 </body>
 </html>
