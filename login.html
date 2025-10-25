@@ -1,31 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>TechFix Computer Service</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header>
-    <h1>TechFix Computer Service</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="booking.html">Booking</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </header>
+<script>
+  // Check if user already logged in
+  window.onload = () => {
+    const user = localStorage.getItem("activeUser");
+    if (user) {
+      alert("You are already logged in as " + user);
+      window.location.href = "index.html"; // Redirect to home
+    }
+  }
 
-  <section class="hero">
-    <h2>Fast, Reliable Computer Repair Services</h2>
-    <p>We fix desktops, laptops & gadgets — quick and affordable!</p>
-    <a href="booking.html" class="btn">Book Now</a>
-  </section>
+  function toggleForm(id) {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("signupBox").style.display = "none";
+    document.getElementById("welcomeBox").style.display = "none";
+    document.getElementById(id).style.display = "block";
+  }
 
-  <footer>
-    <p>© 2025 TechFix. All Rights Reserved.</p>
-  </footer>
-</body>
-</html>
+  function signup() {
+    const email = document.getElementById("signupEmail").value;
+    const pass = document.getElementById("signupPass").value;
+
+    if (!email || !pass) return alert("Please fill in all fields.");
+    if (localStorage.getItem(email)) return alert("Account already exists!");
+
+    localStorage.setItem(email, pass);
+    alert("Account created successfully!");
+    toggleForm('loginBox');
+  }
+
+  function login() {
+    const email = document.getElementById("loginEmail").value;
+    const pass = document.getElementById("loginPass").value;
+    const savedPass = localStorage.getItem(email);
+
+    if (savedPass === pass) {
+      localStorage.setItem("activeUser", email);
+      alert("Login successful!");
+      window.location.href = "index.html"; // Redirect ke Home
+    } else {
+      alert("Invalid email or password!");
+    }
+  }
+</script>
