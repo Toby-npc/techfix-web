@@ -42,16 +42,13 @@
 
   <!-- Script to Show Welcome + Logout -->
   <script>
-    // Semak jika pengguna dah login
     const user = localStorage.getItem("activeUser");
     const header = document.querySelector("header");
 
     if (user) {
-      // Tambah mesej sambutan
       const welcome = document.createElement("p");
       welcome.textContent = "Welcome, " + user + " | ";
 
-      // Butang logout
       const logoutBtn = document.createElement("a");
       logoutBtn.href = "#";
       logoutBtn.textContent = "Logout";
@@ -62,7 +59,6 @@
         location.reload(); // refresh page
       };
 
-      // Letak mesej dan butang ke dalam header
       header.appendChild(welcome);
       header.appendChild(logoutBtn);
     }
